@@ -51,24 +51,17 @@ const showResult = (title, containerId, rows, cols, dataArray) => {
 };
 
 const showResult2D = (title, containerId, dataArray) => {
-	// this needs to be done
-    // dataArray is a 2D array
-	// complete this function based on the showResult function
-
     let container = document.getElementById(containerId);
     container.innerHTML = ''; // Clear previous content
     let table = document.createElement('table');
 
-    for (let i = 0; i < rows; i++) {
+    // Assuming dataArray is a 2D array
+    for (let i = 0; i < dataArray.length; i++) {
         let tr = document.createElement('tr');
-        for (let j = 0; j < cols; j++) {
+        for (let j = 0; j < dataArray[i].length; j++) {
             let td = document.createElement('td');
             let span = document.createElement('span');
-            // Calculate the index in the dataArray based on current row and column
-            let index = i * cols + j;
-            if (index < dataArray.length) {
-                span.innerHTML = dataArray[index];
-            }
+            span.innerHTML = dataArray[i][j];
             td.appendChild(span);
             tr.appendChild(td);
         }
@@ -78,7 +71,8 @@ const showResult2D = (title, containerId, dataArray) => {
     let caption = table.createCaption();
     caption.textContent = title;
     container.appendChild(table);
-}
+};
+
 
 function performOperation(operation) {
     let matrix1 = getMatrixData2D('matrix1');
@@ -158,6 +152,8 @@ const subtractMatrices = function (matrix1, matrix2) {
         return null; // Or any other way to handle this error
     }
 
+    let resultMatrix=[];
+
     for (let i=0; i < matrix1.length; i++) {
         resultMatrix[i] = [];
         for (let j=0; j<matrix1[i].length; j++){
@@ -172,7 +168,8 @@ const multiplyMatrices = (matrix1, matrix2) => {
         console.error("Error: Incorrect Size");
         return null; // Or any other way to handle this error
     }
-
+    resultMatrix=[];
+    
     for (let i=0; i < matrix1.length; i++) {
         resultMatrix[i] = [];
         for (let j=0; j<matrix1[i].length; j++){
@@ -183,9 +180,7 @@ const multiplyMatrices = (matrix1, matrix2) => {
             }
             resultMatrix[i][j] = sum;
         }
-        return resultMatrix;
     }
-
-
+    return resultMatrix;
 	// provide the code
 };
