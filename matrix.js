@@ -77,27 +77,28 @@ const showResult2D = (title, containerId, dataArray) => {
 function performOperation(operation) {
     let matrix1 = getMatrixData2D('matrix1');
     let matrix2 = getMatrixData2D('matrix2');
-    console.log("1st Matrix",matrix1);
+    console.log("1st Matrix", matrix1);
     console.log("2nd Matrix", matrix2);
     console.log("Operation", operation);
-    // Just a test result
-    let result=[];
+    let result = null; // Initialize result as null
 
-    // Call your matrix calculation functions here
-    // For example: if (operation === 'add') { addMatrices(matrix1, matrix2); }
-    if(operation=='add'){
-        addMatrices(matrix1, matrix2);
+    // Call your matrix calculation functions here and assign the result
+    if (operation === 'add') {
+        result = addMatrices(matrix1, matrix2);
+    } else if (operation === 'subtract') {
+        result = subtractMatrices(matrix1, matrix2);
+    } else if (operation === 'multiply') {
+        result = multiplyMatrices(matrix1, matrix2);
     }
 
-    if(operation=='subtract'){
-        subtractMatrices(matrix1, matrix2);
+    // Check if the operation was successful
+    if (result !== null) {
+        // If the result is not null, display it
+        showResult2D('The Result', 'matrix3', result);
+    } else {
+        // Handle the error or impossible situation, e.g., incorrect matrix sizes
+        console.error("Operation could not be performed. Check matrix dimensions.");
     }
-
-    if(operation=='multiply'){
-        multiplyMatrices(matrix1, matrix2);
-    }
-	// prints suitable messages for impossible situation
-    showResult2D('The Result', 'matrix3', result); // use suitable function for printing results
 }
 
 const getMatrixData1D = function (matrixId) {
