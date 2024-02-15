@@ -136,22 +136,17 @@ const getMatrixData2D = function (matrixId) {
 // Add your matrix calculation functions here
 // The functions must check the posibility of calculation too.
 function addMatrices(matrix1, matrix2) {
-    // Check if the dimensions of the two matrices are the same
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
         console.error("Error: Incorrect Size");
-        return null; // Or any other way to handle this error
+        return null; 
     }
 
     let resultMatrix = [];
 
-    // Iterate over rows
     for (let i = 0; i < matrix1.length; i++) {
-        // Initialize the current row in resultMatrix
         resultMatrix[i] = [];
 
-        // Iterate over columns
         for (let j = 0; j < matrix1[i].length; j++) {
-            // Add the corresponding elements from matrix1 and matrix2
             resultMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
         }
     }
@@ -162,7 +157,7 @@ function addMatrices(matrix1, matrix2) {
 const subtractMatrices = function (matrix1, matrix2) { 
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
         console.error("Error: Incorrect Size");
-        return null; // Or any other way to handle this error
+        return null;
     }
 
     let resultMatrix=[];
@@ -174,26 +169,26 @@ const subtractMatrices = function (matrix1, matrix2) {
         }
     }
     return resultMatrix;
-	// provide the code
 };
-const multiplyMatrices = (matrix1, matrix2) => { 
-    if (matrix1[0].length !== matrix2.length){
+const multiplyMatrices = (matrix1, matrix2) => {
+    if (matrix1[0].length !== matrix2.length) {
         console.error("Error: Incorrect Size");
-        return null; // Or any other way to handle this error
+        return null; 
     }
-    resultMatrix=[];
-    
-    for (let i=0; i < matrix1.length; i++) {
-        resultMatrix[i] = [];
-        for (let j=0; j<matrix1[i].length; j++){
-            let sum=0
-            for(let k=0; k<matrix2.length; k++){
-                sum += matrix1[i][k] * matrix2[k][j];
 
+    let resultMatrix = [];
+
+    for (let i = 0; i < matrix1.length; i++) {
+        resultMatrix[i] = [];
+        for (let j = 0; j < matrix2[0].length; j++) {
+            let sum = 0;
+            for (let k = 0; k < matrix1[0].length; k++) {
+                sum += matrix1[i][k] * matrix2[k][j];
             }
             resultMatrix[i][j] = sum;
         }
     }
+
     return resultMatrix;
-	// provide the code
 };
+
